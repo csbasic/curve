@@ -1,15 +1,8 @@
 <x-layout>
    @include('partials._breadcrumbs', ['page' => $page])
-      {{-- <header>
-         <h1 class="text-3xl text-center font-bold my-6 uppercase">
-               Manage Gigs
-         </h1>
-      </header> --}}
+
    <div class="row  justify-content-between">
       <div class="col-md-6 offset-md-3">
-         {{-- <div class="mt-6">
-            mar
-         </div> --}}
          <table class="table ">
             <tbody>
                @unless ($posts->isEmpty())

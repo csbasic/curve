@@ -22,7 +22,6 @@ class UserController extends Controller
         ]);
 
         $formFields['password'] = bcrypt($formFields['password']);
-        // $user = User::where('email', $request->email)->first();
         $user = User::create($formFields);
 
         // login

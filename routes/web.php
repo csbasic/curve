@@ -7,14 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
 // get all posts
 Route::get('/', [PostController::class, 'index']);
-
 
 // show create post form
 Route::get('/post/create', [PostController::class, 'showCreatePostForm'])->middleware('auth');
@@ -40,18 +34,11 @@ Route::get("/posts/{post}/detail", [PostController::class, 'show']);
 // Create user
 Route::post('/user', [UserController::class, 'store']);
 
-
-
 // show sign up form | name route "login" to function with middleware
 Route::get('/sign-up', [UserController::class, 'showSignUpPage']);
 
 // Create user
 Route::post('/authenticate/sign-up', [UserController::class, 'signUp'])->middleware('guest');
-
-
-
-// log user out 
-// Route::post('/sign-out', [UserController::class, 'logout'])->middleware('auth');
 
 // log user out 
 Route::post('/sign-out', [UserController::class, 'signOut'])->middleware('auth');

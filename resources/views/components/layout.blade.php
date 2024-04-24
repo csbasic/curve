@@ -48,21 +48,13 @@
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        {{-- <h1>Append</h1> --}}
+    
         <img src="{{ asset('assets/img/curve-logo.png') }}" alt="">
-        {{-- <x-flash-message /> --}}
-        {{-- <span>.</span> --}}
+      
       </a>
 
       <!-- Nav Menu -->
       <nav id="navmenu" class="navmenu flex">
-        {{-- <ul class="justify-content-end">
-          <li><a href="index.html#hero">Home</a></li>
-          <li><a  href="index.html#contact">Contact</a></li>
-        </ul> --}}
-
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav><!-- End Nav Menu -->
     
@@ -93,7 +85,6 @@
                 <button class="btn btn-getstarted" type="submit">
                     <i class="fa-solid fa-sign-out"></i> Sign Out
                 </button>
-                  {{-- <a class="btn-getstarted" href="/sign-in">Sign In</a> --}}
             </form>
             </div>
       </div>
@@ -131,17 +122,6 @@
           </div>
         </div>
 
-        {{-- <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
- --}}
         <div class="col-lg-2 col-6 footer-links">
           <h4>Our Services</h4>
           <ul>
@@ -170,10 +150,6 @@
     <div class="container copyright text-center mt-4">
       <p>&copy; <span>Copyright</span> <strong class="px-1">Curve</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         Designed by <a href="https://loople.dev/">Loople Dev</a>
       </div>
     </div>

@@ -12,7 +12,6 @@
                <article class="article">
                   <div class="reply-form p-4">
                      <form method="POST" action="/posts/{{ $post->id }}/update" enctype="multipart/form-data">
-                        {{-- csrf stops cross site request fugery --}}
                         @csrf
                         @method('put')
                         <div class="row mt-4">

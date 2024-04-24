@@ -1,21 +1,12 @@
 @props(['post', 'author', 'image'])
 @php
-   // dd($post->user);
 
-   // $cat = $post->category;
-   // $cat = explode(',', $cat)[0];
-   // dd($authors);
 @endphp
-
-{{-- @props(['post']) --}}
 
 <div {{ $attributes->merge(['class' => 'col-xl-4 col-lg-6']) }} >
      <article>
          <div class="post-img">
-            {{-- <img src="assets/img/blog/index.jpg" alt="" class="img-fluid"> --}}
-         {{-- {{ dd(asset("storage/".$post->image)) }} --}}
             <img src='{{$post->image ? asset("storage/".$post->image) : asset('assets/img/index.jpg') }}' alt="" class="img-fluid">
-            {{-- <a href="/listings/{{ $listing->id }}">{{ $listing->title }}</a> --}}
          </div>
          
 
@@ -36,4 +27,4 @@
             
          </div>
    </article>
-</div><!-- End post list item -->
+</div>

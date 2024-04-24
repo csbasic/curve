@@ -12,9 +12,7 @@
                <article class="article">
                   <div class="reply-form p-4">
                      <form method="POST" action="/post/save" enctype="multipart/form-data">
-                        {{-- csrf stops cross site request fugery --}}
                         @csrf
-                        
                         <div class="row mt-4">
                            <label for="title" class="inline-block text-lg mb-2"
                               >Post Title</label
@@ -33,7 +31,7 @@
 
                         <div class="row mt-4">
                            <label for="category_id" class="inline-block text-lg mb-2">Post Categories</label>
-                           {{-- <input type="s" name="category_id" class="border border-gray-200 rounded p-2 w-full"> --}}
+                     
                            <select id="category_id" name="category_id" size="4" multiple>
                               <option value="1">Sport</option>
                               <option value="2">Entertainment</option>
