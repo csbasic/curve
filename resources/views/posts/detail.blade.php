@@ -1,14 +1,11 @@
 
 @php
    $page =   $page ;
-  //  $post = $post[0];
-  //  dd($post->category);
    $tags = explode(",", $post->tags);
-  //  dd($tags);
 @endphp
 <x-layout>
    @include('partials._breadcrumbs', ['page' => $page])
-   <!-- Blog-details Section - Blog Details Page -->
+
     <section id="blog-details" class="blog-details">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -31,14 +28,13 @@
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
                 </ul>
-              </div><!-- End meta top -->
-
+              </div>
               <div class="content">
                 <p>
                   {{ $post->description }}
                 </p>
 
-              </div>--><!-- End post content -->
+              </div>-->
 
            <div class="meta-bottom">
                 <i class="bi bi-folder"></i>
@@ -52,9 +48,9 @@
                     <li><a href="#">{{ $tag }}</a></li>
                   @endforeach
                 </ul>
-              </div>  <!--  End meta bottom -->
+              </div> 
 
-            </article><!-- End post article -->
+            </article>
 
           
 
@@ -70,7 +66,7 @@
                   <input type="text">
                   <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
-              </div><!-- End sidebar search formn-->
+              </div>
 
               <div class="sidebar-item categories">
                 <h3 class="sidebar-title">Categories</h3>
@@ -82,7 +78,7 @@
                   <li><a href="#">Creative <span>(8)</span></a></li>
                   <li><a href="#">Educaion <span>(14)</span></a></li>
                 </ul>
-              </div><!-- End sidebar categories-->
+              </div>
 
               
 
@@ -95,9 +91,9 @@
                   
                 
                 </ul>
-              </div><!-- End sidebar tags-->
+              </div>
 
-            </div><!-- End Sidebar -->
+            </div>
 
           </div>
 
@@ -105,5 +101,5 @@
 
       </div>
 
-    </section><!-- End Blog-details Section -->
+    </section>
 </x-layout>

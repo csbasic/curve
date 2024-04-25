@@ -1,11 +1,8 @@
-
 @php
    $page =   $signup ;
 @endphp
 <x-layout>
-   {{-- @include('partials._breadcrumbs', ['signin' => $page]) --}}
-   
-   <!-- Blog Page Title & Breadcrumbs -->
+
    <div data-aos="fade" class="page-title">
    <div class="heading">
       <div class="container">
@@ -19,7 +16,7 @@
       </div>
    </div>
    
-   </div><!-- End Page Title -->
+   </div>
 
    <section id="blog-details" class="blog-details">
 

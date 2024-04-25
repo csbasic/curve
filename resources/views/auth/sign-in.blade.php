@@ -3,9 +3,7 @@
    $page =   $signin ;
 @endphp
 <x-layout>
-   {{-- @include('partials._breadcrumbs', ['signin' => $page]) --}}
-   
-   <!-- Blog Page Title & Breadcrumbs -->
+
    <div data-aos="fade" class="page-title">
    <div class="heading">
       <div class="container">
@@ -19,7 +17,7 @@
       </div>
    </div>
    
-   </div><!-- End Page Title -->
+   </div>
 
    <section id="blog-details" class="blog-details">
 
@@ -84,8 +82,4 @@
       </div>
   </section>
    
-
-   
 </x-layout>
-
-{{-- I am currently working on small tech project, a tesk given to me for an entry into one tech company abroad with the assist of a friend --}}

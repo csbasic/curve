@@ -21,6 +21,12 @@ class UserController extends Controller
             'password' => 'required| confirmed| min:6',
         ]);
 
+        if ($request->hasFile('profile_pic')) {
+            $formFields['profile_pic'] = $request->file('profile_pic')->store('user', 'public');
+        } else {
+            $formFields['profile_pic'] = 'user/profile-pic.jpg';
+        }
+
         $formFields['password'] = bcrypt($formFields['password']);
         $user = User::create($formFields);
 

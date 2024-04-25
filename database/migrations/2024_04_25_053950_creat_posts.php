@@ -14,22 +14,15 @@ return new class extends Migration
 
 
     {
-        Schema::create('listings', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onUpdate('cascade');
             $table->string('title');
+            $table->string('category_id');
             $table->string('tags');
-            $table->string('company');
-            $table->string('location');
-            $table->string('email');
-            $table->string('website');
-            $table->string('logo')->nullable();
+            $table->string('image')->nullable();
             $table->longText('description');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->NULL;
-            // $table->timestamp('created_at')->useCurrent();
-            // $table->timestamp('updated_at')->nullable()->change();
-            // $table->timestamp('created_at')->default('CURRENT_TIMESTAMP');
+            $table->timestamps();
             $table->integer('status')->default('1');
         });
     }

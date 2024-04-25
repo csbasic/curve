@@ -67,7 +67,6 @@ class PostController extends Controller
             abort(403, 'Unauthorized Action');
         }
 
-
         $formFields = $request->validate([
             'title' => 'required',
             'tags' => 'required',
@@ -86,9 +85,7 @@ class PostController extends Controller
             abort(403, 'Unauthorized Action');
         }
 
-
-        $formFields['status'] = 0;
-        $post->update($formFields);
+        $post->delete();
 
         return back()->with('message', 'Post deleted successfully!');
     }

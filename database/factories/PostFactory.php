@@ -9,17 +9,18 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PostFactory extends Factory
 {
+    private static $category_id = 1;
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
     public function definition(): array
+
     {
         return [
             'title' => $this->faker->sentence(),
-            'image' => $this->faker->url(),
-            'category_id' => $this->faker->numberBetween(1, 10),
+            'category_id' => self::$category_id++,
             'tags' => 'laravel, react, api, backend, css',
             'description' => $this->faker->paragraph(),
         ];

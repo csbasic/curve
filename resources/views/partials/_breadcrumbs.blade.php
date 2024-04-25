@@ -1,5 +1,5 @@
 
-   <!-- Blog Page Title & Breadcrumbs -->
+
     <div data-aos="fade" class="page-title">
       <div class="heading">
         <div class="container">
@@ -21,4 +21,4 @@
           </ol>
         </div>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
