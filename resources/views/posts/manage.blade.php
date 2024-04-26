@@ -1,6 +1,5 @@
 <x-layout>
    @include('partials._breadcrumbs', ['page' => $page])
-
    <div class="row  justify-content-between">
       <div class="col-md-6 offset-md-3">
          <table class="table ">

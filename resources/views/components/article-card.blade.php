@@ -1,15 +1,8 @@
-
-
-@php
-// dd($post->category->name);
-@endphp
-
 <div {{ $attributes->merge(['class' => 'col-xl-4 col-lg-6']) }} >
      <article>
          <div class="post-img">
             <img src='{{$post->image ? asset("storage/".$post->image) : asset('assets/img/index.jpg') }}' alt="" class="img-fluid">
          </div>
-         
 
          <p class="post-category">{{ $post->category->name }}</p>
 

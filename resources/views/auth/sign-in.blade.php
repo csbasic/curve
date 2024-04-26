@@ -29,7 +29,6 @@
 
                <article class="article">
                   <div class="reply-form p-4">
-
                   
                      <p>Sign in to publish articles</p>
                      <form action="/authenticate/sign-in" method="POST">
