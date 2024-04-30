@@ -10,16 +10,13 @@ use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
-
     public function index()
     {
-
         $cluster = array(
             'posts' => Post::latest()->simplePaginate(6),
             'categories' => Category::all(),
             'authors' => User::all(),
         );
-
         return view('posts.index', ['cluster' => $cluster]);
     }
 
@@ -30,7 +27,6 @@ class PostController extends Controller
 
     public function showEditPostForm(Post $post)
     {
-
         return view('posts.edit', ['post' => $post, 'page' => 'Edit Post']);
     }
 

@@ -38,7 +38,29 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+  @media (min-width: 1200px) {
+  .navmenu .dropdown ul {
+    margin-top: 13px !important;
+    left: -6em !important;
+    width: 9.5em !important;
+    
+  }
+
+  .section-title {
+    padding-bottom: 0px!important;
+  }
+}  
+  
+
+
+</style>
+  
 </head>
+
+@php
+  // dd(request()->is("posts"));
+@endphp
 
 <body class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 
@@ -56,6 +78,12 @@
       <!-- Nav Menu -->
       <nav id="navmenu" class="navmenu flex">
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <ul>
+          <li><a href="/" class="{{request()->is('/') ? 'active' : ''}}">Home</a></li>
+          <li><a href="/service" class="{{request()->is('service') ? 'active' : ''}}">Services</a></li>
+          <li><a href="/posts" class="{{request()->is('posts') ? 'active' : ''}}">Blog</a></li>
+          <li><a href="/contact" class="{{request()->is('contact') ? 'active' : ''}}">Contact</a></li>
+        </ul>
       </nav><!-- End Nav Menu -->
     
       @auth
@@ -63,31 +91,47 @@
         <div class="align-items-center ">
           <div class="d-flex  ">
             @if (session('welcomeMessage'))
-            <div class="mt-1" x-data="{show: true}" x-init="setTimeout(() => show = false, 4500)" x-show="show">
-                    <span class="font-bold uppercase" style="margin-right: 10px font-weight-bold">
-                        Welcome {{ auth()->user()->name }}
-                    </span> |
+              <div class="mt-1" x-data="{show: true}" x-init="setTimeout(() => show = false, 4500)" x-show="show">
+                <span class="font-bold uppercase" style="margin-right: 10px font-weight-bold">
+                   Welcome {{ auth()->user()->name }}
+                </span> |
             </div>
             @endif
         
       
-            <div class="mt-1 font-weight-bold" style="margin-right:10px; margin-left:5px ">
+            {{-- <div class="mt-1 font-weight-bold" style="margin-right:10px; margin-left:5px ">
                 <a href="/posts/manage" class="hover:text-laravel" style="font-weight: 600">
                   <i class="fa-solid fa-gear"></i>
                   Manage posts |
-              </a>
+                </a>
             </div>
-          
+           --}}
       
             <div>
-              <form class="inline" method="POST" action="/sign-out">
-                @csrf
-                <button class="btn btn-getstarted" type="submit">
-                    <i class="fa-solid fa-sign-out"></i> Sign Out
-                </button>
-            </form>
+              <nav id="navmenu" class="navmenu" style="Margin-right: margin 50px; padding ">
+                <ul>
+                  <li class="dropdown has-dropdown">
+                    <img width="60" src="{{ asset('storage/users/profile-pic.jpg') }}" alt="" />
+                    <ul class="dd-box-shadow" >
+                      <li><a href="/profile">Profile</a></li>
+                      <li><a href="/posts/manage" >Manage Post</a></li>
+                      <li>
+                        <a href="#" >
+                          <form class="inline" method="POST" action="/sign-out">
+                            @csrf
+                            <button class="btn btn-getstarted" type="submit">
+                                <i class="fa-solid fa-sign-out"></i> Sign Out
+                            </button>
+                          </form>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              
             </div>
-      </div>
+          </div>
         </div>
     
       @else
