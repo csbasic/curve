@@ -40,7 +40,7 @@
                                  name="name" 
                                  type="text" 
                                  class="form-control" 
-                                 placeholder="Chi Serge"
+                                 placeholder="Sean Jay"
                                  value="{{ old("name") }}"
                               >
                               @error("name")
@@ -54,7 +54,7 @@
                               <input 
                                  name="email" 
                                  type="text" 
-                                 class="form-control" placeholder="chiserge@curve.com"
+                                 class="form-control" placeholder="seanjay@curve.com"
                                  value="{{ old("email") }}"
                               >
                               @error("email")

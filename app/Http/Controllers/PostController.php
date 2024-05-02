@@ -6,7 +6,6 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -14,26 +13,26 @@ class PostController extends Controller
     {
         $cluster = array(
             'posts' => Post::latest()->simplePaginate(6),
-            'categories' => Category::all(),
             'authors' => User::all(),
         );
+
         return view('posts.index', ['cluster' => $cluster]);
     }
 
     public function showCreatePostForm()
     {
-        return view('posts.create', ['page' => 'Create Post']);
+        return view('posts.create', ['page' => 'Create Post', 'categories' => Category::all()]);
     }
 
     public function showEditPostForm(Post $post)
     {
-        return view('posts.edit', ['post' => $post, 'page' => 'Edit Post']);
+        return view('posts.edit', ['post' => $post, 'page' => 'Edit Post', 'categories' => Category::all()]);
     }
 
     public function show(Post $post)
-
     {
-        return view('posts.detail', ['post' => $post, 'page' => 'Post Detail']);
+        $categories = Category::withCount('posts')->get();
+        return view('posts.detail', ['post' => $post, 'page' => 'Post Detail', 'categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -53,7 +52,7 @@ class PostController extends Controller
 
         Post::create($formFields);
 
-        return redirect('/')->with('message', 'Post created successfully!');
+        return redirect('/posts/manage')->with('message', 'Post created successfully!');
     }
 
     public function update(Request $request, Post $post)
@@ -64,17 +63,22 @@ class PostController extends Controller
         }
 
         $formFields = $request->validate([
-            'title' => 'required',
+            'title' => 'required|string',
             'tags' => 'required',
             'category_id' => 'required',
             'description' => 'required'
         ]);
 
+        if ($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('uploads', 'public');
+        }
+
+
         $post->update($formFields);
-        return back()->with('message', 'Post updated successfully!');
+        return redirect('/posts/manage')->with('message', 'Post updated successfully!');
     }
 
-    public function destroy(Request $request, Post $post)
+    public function destroy(Post $post)
     {
 
         if ($post->user_id != auth()->id()) {
@@ -86,19 +90,9 @@ class PostController extends Controller
         return back()->with('message', 'Post deleted successfully!');
     }
 
-    public function manage(Request $request)
+    public function manage(Post $post)
     {
 
-        $posts =    DB::table('posts')
-
-            ->latest()
-            ->leftJoin('users', 'posts.user_id', '=', 'users.id')
-            ->join('categories', 'posts.category_id', '=', 'categories.id')
-            ->select('posts.*', 'users.name as author_name', 'categories.name as category', 'users.email')
-            ->where('posts.user_id', auth()->id())
-            ->where('posts.status', 1)
-            ->get();
-
-        return view('posts.manage', ['posts' => $posts, 'page' => 'Manage Posts']);
+        return view('posts.manage', ['posts' => auth()->user()->posts()->get(), 'page' => 'Manage Posts']);
     }
 }

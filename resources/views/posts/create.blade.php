@@ -1,6 +1,5 @@
 <x-layout>
-   @include('partials._breadcrumbs', ['page' => $page])
-
+   @include('partials._breadcrumbs', ['page' => $page, 'link' => 'Manage', 'path' => '/posts/manage'])
    <section id="blog-details" class="blog-details">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -33,12 +32,9 @@
                            <label for="category_id" class="inline-block text-lg mb-2">Post Categories</label>
                      
                            <select id="category_id" name="category_id" size="4" multiple>
-                              <option value="1">Sport</option>
-                              <option value="2">Entertainment</option>
-                              <option value="3">Politics</option>
-                              <option value="4">Health</option>
-                              <option value="5">Tech</option>
-                              <option value="6">Economy</option>
+                              @foreach ($categories as $category)
+                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
+                              @endforeach
                            </select>
                            @error('category_id')
                               <p class="text-danger fs-6 fw-lighter">{{ $message }}</p>

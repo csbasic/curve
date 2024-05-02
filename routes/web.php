@@ -11,7 +11,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [HomeController::class, 'index']);
 
 // get service page
-Route::get('/service', [ServiceController::class, 'index']);
+Route::get('/services', [ServiceController::class, 'index']);
 
 // get contact page
 Route::get('/contact', [ContactController::class, 'index']);
@@ -23,10 +23,10 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('/post/create', [PostController::class, 'showCreatePostForm'])->middleware('auth');
 
 // update post
-Route::put('/posts/{post}/update', [PostController::class, 'update'])->middleware('auth');
+Route::put('/posts/{post}/update', [PostController::class, 'update']);
 
 // save post
-Route::post('/post/save', [PostController::class, 'store']);
+Route::post('/post/save', [PostController::class, 'store'])->middleware('auth');
 
 // Manage posts
 Route::get('/posts/manage', [PostController::class, 'manage'])->middleware('auth');
@@ -39,6 +39,15 @@ Route::delete('/posts/{post}/delete', [PostController::class, 'destroy'])->middl
 
 // Single post
 Route::get("/posts/{post}/detail", [PostController::class, 'show']);
+
+// get profile page
+Route::get('/users/{user}/detail', [UserController::class, 'show'])->middleware('auth');
+
+// get edit profile page
+Route::get('/users/{user}/edit', [UserController::class, 'editProfile'])->middleware('auth');
+
+// get edit profile page
+Route::put('/users/{user}/update', [UserController::class, 'update'])->middleware('auth');
 
 // Create user
 Route::post('/user', [UserController::class, 'store']);

@@ -5,10 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Blog - Append Bootstrap Template</title>
+  <title>Curve</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  
+  <!-- Favicons -->
+  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -23,11 +26,6 @@
   <link href=" {{ asset('assets/vendor/swiper/swiper-bundle.min.css ') }}" rel="stylesheet">
   <link href=" {{ asset('assets/vendor/aos/aos.css ') }}" rel="stylesheet">
 
-  
-  <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
-
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
@@ -38,82 +36,62 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-<style>
-  @media (min-width: 1200px) {
-  .navmenu .dropdown ul {
-    margin-top: 13px !important;
-    left: -6em !important;
-    width: 9.5em !important;
-    
-  }
-
-  .section-title {
-    padding-bottom: 0px!important;
-  }
-}  
+  <style>
   
-
-
-</style>
-  
+      @media (min-width: 1200px) {
+      .navmenu .dropdown ul {
+        margin-top: 13px !important;
+        left: -7em !important;
+        width: 9.5em !important;
+        
+      } 
+    }  
+  </style>
 </head>
 
-@php
-  // dd(request()->is("posts"));
-@endphp
-
-<body class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu">
-
+<body class="index-page scrolled" data-bs-spy="scroll" data-bs-target="#navmenu">
   <!-- ======= Header ======= -->
-  <header id="header" class="header sticky-top d-flex align-items-center">
+  <header id="header" class="header fixed-top d-flex align-items-center">
   
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-
-      <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
-    
-        <img src="{{ asset('assets/img/curve-logo.png') }}" alt="">
+    <div class="container-fluid d-flex align-items-center justify-content-between ">
       
+      <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+          <img src="{{ asset('assets/img/curve-logo.png') }}" alt="Logo">
       </a>
 
       <!-- Nav Menu -->
       <nav id="navmenu" class="navmenu flex">
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         <ul>
-          <li><a href="/" class="{{request()->is('/') ? 'active' : ''}}">Home</a></li>
-          <li><a href="/service" class="{{request()->is('service') ? 'active' : ''}}">Services</a></li>
-          <li><a href="/posts" class="{{request()->is('posts') ? 'active' : ''}}">Blog</a></li>
-          <li><a href="/contact" class="{{request()->is('contact') ? 'active' : ''}}">Contact</a></li>
+            <li><a href="/" class="{{request()->is('/') ? 'active' : ''}}">Home</a></li>
+            <li><a href="/services" class="{{request()->is('services') ? 'active' : ''}}">Services</a></li>
+            <li><a href="/posts" class="{{request()->is('posts') ? 'active' : ''}}">Blog</a></li>
+            <li><a href="/contact" class="{{request()->is('contact') ? 'active' : ''}}">Contact</a></li>
         </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav><!-- End Nav Menu -->
     
       @auth
   
         <div class="align-items-center ">
-          <div class="d-flex  ">
-            @if (session('welcomeMessage'))
-              <div class="mt-1" x-data="{show: true}" x-init="setTimeout(() => show = false, 4500)" x-show="show">
-                <span class="font-bold uppercase" style="margin-right: 10px font-weight-bold">
-                   Welcome {{ auth()->user()->name }}
-                </span> |
-            </div>
-            @endif
-        
-      
-            {{-- <div class="mt-1 font-weight-bold" style="margin-right:10px; margin-left:5px ">
-                <a href="/posts/manage" class="hover:text-laravel" style="font-weight: 600">
-                  <i class="fa-solid fa-gear"></i>
-                  Manage posts |
-                </a>
-            </div>
-           --}}
-      
-            <div>
-              <nav id="navmenu" class="navmenu" style="Margin-right: margin 50px; padding ">
+          <div class="d-flex">
+            
+              <nav  id="navmenu" class="navmenu" >
                 <ul>
                   <li class="dropdown has-dropdown">
-                    <img width="60" src="{{ asset('storage/users/profile-pic.jpg') }}" alt="" />
+                      @php
+                        $profilePic = request()->user()::find(auth()->id())->profile_pic;
+                      @endphp
+                      <div style="width: 3em; margin-right: 11px!important">
+                        <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+                          @isset($profilePic)
+                          <img style="width: %100; margin-right: 10px" src="{{ asset('storage/'.$profilePic) }}" alt="Prifile Pic" />
+                            @else
+                            <img style="width: %00;" src="{{ asset('storage/users/profile-pic.jpg') }}" alt="Prifile Pic" />
+                          @endisset  
+                        </a>
+                      </div>
                     <ul class="dd-box-shadow" >
-                      <li><a href="/profile">Profile</a></li>
+                    <li><a href="/users/{{ auth()->id() }}/detail">Profile</a></li>
                       <li><a href="/posts/manage" >Manage Post</a></li>
                       <li>
                         <a href="#" >
@@ -129,8 +107,6 @@
                   </li>
                 </ul>
               </nav>
-              
-            </div>
           </div>
         </div>
     

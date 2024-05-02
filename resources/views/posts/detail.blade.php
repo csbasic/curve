@@ -1,10 +1,8 @@
-
 @php
-   $page =   $page ;
    $tags = explode(",", $post->tags);
 @endphp
 <x-layout>
-   @include('partials._breadcrumbs', ['page' => $page])
+   @include('partials._breadcrumbs', ['page' => $page, 'link' => 'Posts', 'path' => "/posts"])
 
     <section id="blog-details" class="blog-details">
 
@@ -24,9 +22,19 @@
 
               <div class="meta-top">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">{{ $post->author_name }}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
+                  <li class="d-flex align-items-center">
+                    <i class="bi bi-person"></i> 
+                    <a href="blog-details.html">{{ $post->user->name }}</a>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <i class="bi bi-clock"></i> 
+                    <time datetime="2022-01-01">{{ date_format($post->created_at, "D M, Y - h:i") }}</time>
+                    
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <i class="bi bi-chat-dots"></i> 
+                      12 Comments
+                  </li>
                 </ul>
               </div>
               <div class="content">
@@ -34,7 +42,7 @@
                   {{ $post->description }}
                 </p>
 
-              </div>-->
+              </div>
 
            <div class="meta-bottom">
                 <i class="bi bi-folder"></i>
@@ -71,12 +79,11 @@
               <div class="sidebar-item categories">
                 <h3 class="sidebar-title">Categories</h3>
                 <ul class="mt-3">
-                  <li><a href="#">General <span>(25)</span></a></li>
-                  <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                  <li><a href="#">Travel <span>(5)</span></a></li>
-                  <li><a href="#">Design <span>(22)</span></a></li>
-                  <li><a href="#">Creative <span>(8)</span></a></li>
-                  <li><a href="#">Educaion <span>(14)</span></a></li>
+                  
+                  @foreach ($categories as $category)
+                    <li><a href="#">{{  $category->name }} <span>{{ $category->posts->count() }}</span></a></li>
+                  @endforeach
+                
                 </ul>
               </div>
 
