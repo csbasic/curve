@@ -6,9 +6,9 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-         <div class="row g-4">
+         <div class="row g-4 justify-content-center">
 
-            <div class="col-lg-7 offset-lg-3">
+            <div class="col-lg-8">
 
                <article class="article">
                   <div class="reply-form p-4">
