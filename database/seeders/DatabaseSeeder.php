@@ -38,6 +38,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Politics',
         ]);
         Category::create([
+            'name' => 'Economy',
+        ]);
+        Category::create([
             'name' => 'Tech',
         ]);
         Category::create([

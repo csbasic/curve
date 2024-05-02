@@ -15,7 +15,7 @@
 
           @unless (!count($posts) > 0)
             @foreach ($posts as $key => $post)
-              <x-article-card :post="$post" /> 
+              <x-article-card :post="$post"  /> 
             @endforeach
             @else
             <h3 class="align-items-center">No listing found </h3>
