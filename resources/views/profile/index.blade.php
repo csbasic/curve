@@ -31,7 +31,7 @@
                         <div class="member-info">
                         <h4>{{ $user->name }}</h4>
                         <span>@if ($user->occupation) {{ $user->occupation }}@endif</span>
-                        <p>Aliquam iure quaerat voluptatem praesentium possimus unde laudantium vel dolorum distinctio dire flow</p>
+                        <p>@if ($user->bio) {{ $user->bio }}@endif</p>
                         </div>
                      <a href="edit" class="btn btn-danger mt-4 h" style="background-color: #E84545; "> Edit Profile</a>
                      </div>
