@@ -5,12 +5,46 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
 
+    public function show(User $user)
+    {
+        return view('profile.index', ['page' => 'Profile', 'user' => $user]);
+    }
+
+    public function editProfile()
+    {
+
+        $user = User::find(auth()->id());
+
+        return view('profile.edit', ['page' => 'Edit', 'user' => $user]);
+    }
+
+    public function update(Request $request, User $user)
+    {
+        // $user = User::find(auth()->id());
+
+        if ($user->id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
+        $formFields = $request->validate([
+            'name' => 'required|string',
+            'occupation' => 'string',
+            'phone' => 'string',
+            'bio' => 'string'
+        ]);
+        // dd($request);
+        // dd($formFields);
+        if ($request->hasFile('profile_pic')) {
+            $formFields['profile_pic'] = $request->file('profile_pic')->store('user', 'public');
+        }
+
+        $user->update($formFields);
+        return redirect("/users/$user->id/detail")->with('message', 'Profile updated successfully!');
+    }
 
     // Store user into db
     public function signUp(Request $request)

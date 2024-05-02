@@ -5,18 +5,17 @@
 <x-layout>
 
    <div data-aos="fade" class="page-title">
-   <div class="heading">
-      <div class="container">
-         <div class="row d-flex justify-content-center text-center">
-         <div class="col-lg-8">
-            <h1 style="font-size: 3cm">Curve</h1>
-            <h4 style="">Sign In</h4>
-            
-         </div>
+      <div class="heading">
+         <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+               <h1 style="font-size: 3cm">Curve</h1>
+               <h4 style="">Sign In</h4>
+               
+            </div>
+            </div>
          </div>
       </div>
-   </div>
-   
    </div>
 
    <section id="blog-details" class="blog-details">

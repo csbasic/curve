@@ -8,6 +8,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view("contact.index", ['page' => 'Contact']);
+        $subtitle = 'Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit';
+        return view("contact.index", ['page' => 'Contact', 'subtitle' => $subtitle]);
     }
 }

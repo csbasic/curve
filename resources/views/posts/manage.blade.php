@@ -18,8 +18,8 @@
                      <td class="">
                         <div class="mt-3">
                            <a href="/posts/{{ $post->id }}/edit"
-                              class="mt-5">
-                              <i class="fa-solid btn fa-pen-to-square"></i>Edit
+                              class="mt-5 text-dark"></i>Edit
+                              <i class="bi bi-pencil"></i>
                            </a>
                         </div>
                      </td>
@@ -27,7 +27,8 @@
                         <form class="pt-2"  action="/posts/{{ $post->id }}/delete" method="POST">
                            @csrf
                            @method('DELETE')
-                           <button class="btn"><i class="fa-solid fa-trash pt-4"></i> Delete </button>
+                           <button type="button" onclick="alert('Do you really want to take this action!')" class="btn text-danger"> Delete <i class="bi bi-pencil"></i>
+                           </button>
                         </form>
                      </td>
                   </tr>
@@ -45,7 +46,7 @@
       </div>
       <div class="row col-md-3 mt-3">
          <div class=" ">
-            <a class="btn btn-danger" href="/post/create">Create Post</a>
+            <a class="btn btn-outline-danger" href="/post/create">Create Post</a>
          </div>
       </div>
    </div>
