@@ -57,7 +57,7 @@ The app is deployed using GitHub pages. You can view it using the 'live demo' ab
 
 ## Acknowledgments
 
-- A special thanks to Sir Collins for guidance.
+- A special thanks to Sir Collins for guidance and Instructions. Checkout his Github profile  [@CollinsTatang](https://github.com/CollinsTatang)
 
 ## 📝 License
 
