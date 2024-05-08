@@ -1,6 +1,4 @@
-@php
-  
-@endphp
+
 <div data-aos="fade" class="page-title">
   
   <div class="heading">
