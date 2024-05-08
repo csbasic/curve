@@ -115,13 +115,11 @@
 
         @php
           $posts = $cluster['posts'];
-
-          // dd($posts);
         @endphp
 
           @unless (!count($posts) > 0)
             @foreach ($posts as $key => $post)
-              <x-article-card :post="$post"  /> 
+              <x-article-card :post="$post" :from="'home'" wire:scroll /> 
             @endforeach
             @else
             <h3 class="align-items-center">No listing found </h3>

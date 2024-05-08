@@ -7,10 +7,14 @@
     if(isset($from) && $from == 'manage-posts') {
       $path = "/posts/manage";
       $link = "Manage Posts";
+    } if (isset($from) && $from == "home") {
+      $path = "/";
+      $link = "Recent Posts";
     } else {
       $path = "/posts";
       $link = "Posts";
     }
+    
 @endphp  
 
 <x-layout>

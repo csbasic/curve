@@ -1,3 +1,6 @@
+@props(['from', 'post'])
+
+
 <div {{ $attributes->merge(['class' => 'col-xl-4 col-lg-6']) }} >
      <article>
          <div class="post-img">
@@ -7,7 +10,7 @@
          <p class="post-category">{{ $post->category->name }}</p>
 
          <h2 class="title">
-            <a href="/posts/{{ $post->id }}/detail/?from=posts">{{ $post->title }}</a>
+            <a href="/posts/{{ $post->id }}/detail/?from={{ $from }}">{{ $post->title }}</a>
          </h2>
 
          <div class="d-flex align-items-center">
