@@ -1,11 +1,14 @@
 @php
+
+  $subtitle = "Posts List Subtitle We need not to have biases if the goal of dispensing information is to educate the masses. Our world is dying and crumbling because those who wants to educate others are less  informed than the masses.";
+
   $page = 'Posts';
   $posts = $cluster['posts'];
 @endphp
 
 <x-layout>
 
-    @include('partials._breadcrumbs', ['page' => $page])
+    @include('partials._breadcrumbs', ['page' => $page, 'subtitle' => $subtitle])
 
     <section id="blog" class="blog">
 

@@ -40,16 +40,51 @@
   
       @media (min-width: 1200px) {
       .navmenu .dropdown ul {
-        margin-top: 13px !important;
         left: -7em !important;
-        width: 9.5em !important;
+        width: 10em !important;
         
       } 
+
+       button[type=submit] {
+        background: #E84545;
+        color: #E84545;
+        border: 0;
+        padding: 10px 30px;
+        transition: 0.4s;
+        border-radius: 4px;
+      }
+
+      .about-section-pt {
+        padding-top: 6em !important;
+      }
+
+      .navmenu .dropdown-adjust ul {
+        left: -3em !important;
+      }
+
+      .header {
+        --heading-color: #444444 !important;
+        --nav-color: #444444 !important;
+        --nav-hover-color: #d83535 !important; 
+      }
+      
+      .part-vertical {
+        padding-top: 4em !important;
+        padding-bottom: 4em !important;
+      }
+
+      a .active:focus {
+        color: #e84545;
+      }
     }  
   </style>
 </head>
 
-<body class="index-page scrolled" data-bs-spy="scroll" data-bs-target="#navmenu">
+<body @if (request()->is('curve') || request()->is('about'))
+  class="index-page header-change"
+  @else
+   class="index-page" 
+@endif data-bs-spy="scroll" data-bs-target="#navmenu">
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
   
@@ -63,7 +98,15 @@
       <nav id="navmenu" class="navmenu flex">
         <ul>
             <li><a href="/" class="{{request()->is('/') ? 'active' : ''}}">Home</a></li>
-            <li><a href="/services" class="{{request()->is('services') ? 'active' : ''}}">Services</a></li>
+            <li class="dropdown has-dropdown dropdown-adjust">
+              <a href="#">
+                <span @if (request()->is('curve') || request()->is('team')) class="active"@endif>About</span>
+              </a>
+              <ul class="dd-box-shadow">
+                <li><a href="/curve" class="{{request()->is('curve') ? 'active' : ''}}">Curve</a></li>
+                <li><a href="/team"  class="{{request()->is('team') ? 'active' : ''}}">Team</a></li>
+              </ul>
+            </li>
             <li><a href="/posts" class="{{request()->is('posts') ? 'active' : ''}}">Blog</a></li>
             <li><a href="/contact" class="{{request()->is('contact') ? 'active' : ''}}">Contact</a></li>
         </ul>
@@ -80,10 +123,12 @@
                   <li class="dropdown has-dropdown">
                       @php
                         $profilePic = request()->user()::find(auth()->id())->profile_pic;
+                        // dd($profilePic);
                       @endphp
                       <div style="width: 3em; margin-right: 11px!important">
                         <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
                           @isset($profilePic)
+                          
                           <img style="width: %100; margin-right: 10px" src="{{ asset('storage/'.$profilePic) }}" alt="Prifile Pic" />
                             @else
                             <img style="width: %00;" src="{{ asset('storage/users/profile-pic.jpg') }}" alt="Prifile Pic" />
@@ -93,11 +138,12 @@
                     <ul class="dd-box-shadow" >
                     <li><a href="/users/{{ auth()->id() }}/detail">Profile</a></li>
                       <li><a href="/posts/manage" >Manage Post</a></li>
+                      <li><a href="/contacts" >Manage Contacts</a></li>
                       <li>
                         <a href="#" >
                           <form class="inline" method="POST" action="/sign-out">
                             @csrf
-                            <button class="btn btn-getstarted" type="submit">
+                            <button class="text-white" type="submit">
                                 <i class="fa-solid fa-sign-out"></i> Sign Out
                             </button>
                           </form>
@@ -137,8 +183,6 @@
               <a href=""><i class="bi bi-instagram"></i></a>
               <a href=""><i class="bi bi-linkedin"></i></a>
             </div>
-            
-          
           </div>
         </div>
 
@@ -198,8 +242,6 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/js/main.js') }} "></script>
-
-
 
 </body>
 

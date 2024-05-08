@@ -7,7 +7,7 @@
          <p class="post-category">{{ $post->category->name }}</p>
 
          <h2 class="title">
-            <a href="/posts/{{ $post->id }}/detail">{{ $post->title }}</a>
+            <a href="/posts/{{ $post->id }}/detail/?from=posts">{{ $post->title }}</a>
          </h2>
 
          <div class="d-flex align-items-center">

@@ -1,8 +1,10 @@
-<x-layout>
-   @include('partials._header-homepage')
 
+
+<x-layout>
+
+    @include('partials._breadcrumbs', ['page' => $page])
     <!-- About Section - Home Page -->
-    <section id="about" class="about about-section-pt">
+    <section id="about" class="about">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row align-items-xl-center gy-5">
@@ -10,7 +12,9 @@
           <div class="col-xl-5 content">
             <h3>About Us</h3>
             <h2>Ducimus rerum libero reprehenderit cumque</h2>
-            <p>Ipsa sint sit. Quis ducimus tempore dolores impedit et dolor cumque alias maxime. Enim reiciendis minus et rerum hic non. Dicta quas cum quia maiores iure. Quidem nulla qui assumenda incidunt voluptatem tempora deleniti soluta.</p>
+            <p>Ipsa sint sit. Quis ducimus tempore dolores impedit et dolor cumque alias maxime. Enim reiciendis minus
+              et rerum hic non. Dicta quas cum quia maiores iure. Quidem nulla qui assumenda incidunt voluptatem tempora
+              deleniti soluta.</p>
             <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
           </div>
 
@@ -45,7 +49,8 @@
                 <div class="icon-box">
                   <i class="bi bi-graph-up-arrow"></i>
                   <h3>Delares sapiente</h3>
-                  <p>Sint et dolor voluptas minus possimus nostrum. Reiciendis commodi eligendi omnis quideme lorenda</p>
+                  <p>Sint et dolor voluptas minus possimus nostrum. Reiciendis commodi eligendi omnis quideme lorenda
+                  </p>
                 </div>
               </div> <!-- End Icon Box -->
 
@@ -57,86 +62,7 @@
 
     </section><!-- End About Section -->
 
-    <!-- Stats Section - Home Page -->
-    <section id="stats" class="stats">
-
-      <img src="assets/img/stats-bg.jpg" alt="" data-aos="fade-in">
-
-      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Clients</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Workers</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- End Stats Section -->
-
-        <!-- Recent-posts Section - Home Page -->
-    <section id="recent-posts" class="recent-posts">
-
-      <!--  Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Recent Posts</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-        @php
-          $posts = $cluster['posts'];
-
-          // dd($posts);
-        @endphp
-
-          @unless (!count($posts) > 0)
-            @foreach ($posts as $key => $post)
-              <x-article-card :post="$post"  /> 
-            @endforeach
-            @else
-            <h3 class="align-items-center">No listing found </h3>
-          @endunless
-
-
-        </div><!-- End recent posts list -->
-
-      </div>
-
-    </section><!-- End Recent-posts Section -->
-
-
-
-    <!-- Clients Section - Home Page -->
+        <!-- Clients Section - Home Page -->
     <section id="clients" class="clients">
 
       <div class="container-fluid" data-aos="fade-up">
@@ -172,5 +98,4 @@
       </div>
 
     </section><!-- End Clients Section -->
-
 </x-layout>

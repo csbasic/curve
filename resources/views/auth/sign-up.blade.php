@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="text-center mt-2">
-                           <button type="submit" class="btn btn-danger">Sign Up</button>
+                           <button type="submit" class="text-white">Sign Up</button>
                         </div>
 
                      </form>

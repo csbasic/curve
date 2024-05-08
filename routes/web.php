@@ -1,20 +1,30 @@
 <?php
 
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TeamController;
 
 // get home page
 Route::get('/', [HomeController::class, 'index']);
 
 // get service page
-Route::get('/services', [ServiceController::class, 'index']);
+Route::get('/curve', [AboutController::class, 'curve']);
+Route::get('/team', [AboutController::class, 'team']);
 
 // get contact page
-Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/contact', [ContactController::class, 'createContact']);
+Route::get('/contacts/{contact}/detail', [ContactController::class, 'showContact'])->middleware('auth');
+Route::get('/contacts', [ContactController::class, 'listContacts'])->middleware('auth');
+
+// get contact detail
+Route::get('/messages/{message}/detail')->middleware('auth');
+
+// save message
+Route::post('/message/save', [ContactController::class, 'store']);
 
 // get all posts
 Route::get('/posts', [PostController::class, 'index']);

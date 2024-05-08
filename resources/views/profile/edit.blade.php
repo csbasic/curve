@@ -1,8 +1,11 @@
-<x-layout>
    @php
       $userId = auth()->id();
+      $subtitle = 'Edit Profile Subtitle We need not to have biases if the goal of dispensing information is to educate the masses. Our world is dying and crumbling because those who wants to educate others are less informed than the masses';
    @endphp
-   @include('partials._breadcrumbs', ['page' =>  $page, 'link' => 'Profile', 'path' => "/users/$userId/detail"])
+
+<x-layout>
+
+   @include('partials._breadcrumbs', ['page' =>  $page, 'link' => 'Profile', 'path' => "/users/$userId/detail", 'subtitle' => $subtitle])
 
    <section id="blog-details" class="blog-details">
 

@@ -32,7 +32,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $categories = Category::withCount('posts')->get();
-        return view('posts.detail', ['post' => $post, 'page' => 'Post Detail', 'categories' => $categories]);
+        return view('posts.detail', ['post' => $post, 'page' => 'Detail', 'categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -90,9 +90,8 @@ class PostController extends Controller
         return back()->with('message', 'Post deleted successfully!');
     }
 
-    public function manage(Post $post)
+    public function manage()
     {
-
-        return view('posts.manage', ['posts' => auth()->user()->posts()->get(), 'page' => 'Manage Posts']);
+        return view('posts.list', ['posts' => auth()->user()->posts()->get(), 'page' => 'Manage Posts']);
     }
 }
