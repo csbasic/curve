@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function createContact()
     {
-        $subtitle = 'Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit';
-        return view("contact.index", ['page' => 'Contact', 'subtitle' => $subtitle]);
+        return view("contact.create", ['page' => 'Contact']);
     }
 
     public function store(Request $request)
@@ -26,5 +25,17 @@ class ContactController extends Controller
         Contact::create($formfield);
 
         return back()->with('message', 'Message sent successfully!');
+    }
+
+    public function listContacts()
+    {
+        return view('contact.list', ['contacts' => Contact::latest()->simplePaginate(6), 'page' => 'Contact List']);
+    }
+
+    public function showContact(Contact $contact)
+    {
+        $formFields['status'] = 0;
+        $contact->update($formFields);
+        return view('contact.detail', ['contact' => $contact, 'page' => 'Contact Detail']);
     }
 }

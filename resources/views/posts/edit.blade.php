@@ -1,6 +1,13 @@
+@php
+   $tags = explode(",", $post->tags);
+
+   $subtitle = "Post Edit Subtitle We need not to have biases if the goal of dispensing information is to educate the masses. Our world is dying and crumbling because those who wants to educate others are less  informed than the masses.";
+
+@endphp
+
 <x-layout>
 
-   @include('partials._breadcrumbs', ['page' => $page, 'link' => 'Manage Posts', 'path' => '/posts/manage'])
+   @include('partials._breadcrumbs', ['page' => $page, 'link' => 'Manage Posts', 'path' => '/posts/manage', 'subtitle' => $subtitle])
 
    <section id="blog-details" class="blog-details">
 

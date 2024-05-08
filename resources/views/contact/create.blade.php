@@ -1,5 +1,10 @@
+@php
+  $subtitle = "Contact Form Subtitle We need not to have biases if the goal of dispensing information is to educate the masses. Our world is dying and crumbling because those who wants to educate others are less  informed than the masses.";
+@endphp
+
 <x-layout>
-   @include('partials._breadcrumbs', ['page' => $page])
+  
+   @include('partials._breadcrumbs', ['page' => $page, 'subtitle' => $subtitle])
    <section id="contact" class="contact">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -50,31 +55,66 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form action="/message/save" method="POST" enctype="multipart/form-data"  >
+              @csrf
+              
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  <input 
+                    type="text" 
+                    name="name" 
+                    class="form-control" 
+                    placeholder="Your Name" 
+                    required
+                    value="{{ old('name') }}"
+                  />
+                  @error('title')
+                    <p class="text-danger fs-6 fw-lighter">{{ $message }}</p>
+                  @enderror
                 </div>
 
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    name="email" 
+                    placeholder="Your Email" 
+                    required
+                  />
+                  @error('email')
+                    <p class="text-danger fs-6 fw-lighter">{{ $message }}</p>
+                  @enderror
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    name="subject" 
+                    placeholder="Subject" 
+                    required
+                  />
+                  @error('subject')
+                    <p class="text-danger fs-6 fw-lighter">{{ $message }}</p>
+                  @enderror
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  <textarea
+                    class="form-control" 
+                    name="message" 
+                    rows="6" 
+                    placeholder="Message" 
+                    required>{{ old('description') }}</textarea>
+                
+                  @error('message')
+                    <p class="text-danger fs-6 fw-lighter">{{ $message }}</p>
+                  @enderror
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
+                  <button class="text-white" type="submit">Send Message</button>
                 </div>
 
               </div>
