@@ -77,8 +77,6 @@
 
             </article>
 
-          
-
           </div>
 
           <div class="col-lg-4">
@@ -104,16 +102,12 @@
                 </ul>
               </div>
 
-              
-
               <div class="sidebar-item tags">
                 <h3 class="sidebar-title">Tags</h3>
                 <ul class="mt-3">
                   @foreach ($tags as $tag)
                     <li><a href="#">{{ $tag }}</a></li>
                   @endforeach
-                  
-                
                 </ul>
               </div>
 
