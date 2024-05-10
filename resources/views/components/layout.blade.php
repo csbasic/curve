@@ -123,7 +123,6 @@
                   <li class="dropdown has-dropdown">
                       @php
                         $profilePic = request()->user()::find(auth()->id())->profile_pic;
-                        // dd($profilePic);
                       @endphp
                       <div style="width: 3em; margin-right: 11px!important">
                         <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
