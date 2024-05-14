@@ -1,19 +1,17 @@
 @php
    $tags = explode(",", $post->tags);
-
+  $link = "";
+  $path = "";
    $subtitle = "Post Detail Subtitle We need not to have biases if the goal of dispensing information is to educate the masses. Our world is dying and crumbling because those who wants to educate others are less  informed than the masses.";
   
   $from = $_GET['from'];
     if(isset($from) && $from == 'manage-posts') {
       $path = "/posts/manage";
       $link = "Manage Posts";
-    } if (isset($from) && $from == "home") {
-      $path = "/";
-      $link = "Recent Posts";
-    } else {
-      $path = "/posts";
-      $link = "Posts";
-    }
+  } if (isset($from) && $from == "") {
+    $path = "/posts";
+    $link = "Recent Posts";
+  } 
     
 @endphp  
 

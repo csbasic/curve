@@ -1,5 +1,8 @@
 @php
    $subtitle = "Contact Detail subtitle Curve is determined at bridging the gap that has been created by misconceptions and self in order to recue our the world which has denied essense for impression.";
+
+
+
 @endphp
 
 <x-layout>

@@ -1,9 +1,10 @@
 @php
    $subtitle = "Manage Posts Subtitle We need not to have biases if the goal of dispensing information is to educate the masses. Our world is dying and crumbling because those who wants to educate others are less  informed than the masses.";
+
 @endphp
 <x-layout>
    @include('partials._breadcrumbs', ['page' => $page, 'subtitle' => $subtitle, 'from' => 'manage-list'])
-   <div class="row  justify-content-between">
+   <div class="row justify-content-between"  data-aos="fade-up" data-aos-delay="100">
       <div class="col-md-6 offset-md-3">
          <table class="table ">
             <tbody>
@@ -30,7 +31,7 @@
                         <form class="pt-2"  action="/posts/{{ $post->id }}/delete" method="POST">
                            @csrf
                            @method('DELETE')
-                           <button type="button" onclick="alert('Do you really want to take this action!')" class="btn text-danger"> Delete <i class="bi bi-pencil"></i>
+                           <button type="button" onclick="return confirm('Are you sure?')" class="btn text-danger"> Delete <i class="bi bi-pencil"></i>
                            </button>
                         </form>
                      </td>

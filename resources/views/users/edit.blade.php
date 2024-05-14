@@ -5,7 +5,7 @@
 
 <x-layout>
 
-   @include('partials._breadcrumbs', ['page' =>  $page, 'link' => 'Profile', 'path' => "/users/$userId/detail", 'subtitle' => $subtitle])
+   @include('partials._breadcrumbs', ['page' =>  $page, 'link' => 'Profile', 'path' => "/users/$userId/detail/?from", 'subtitle' => $subtitle])
 
    <section id="blog-details" class="blog-details">
 

@@ -76,6 +76,10 @@
       a .active:focus {
         color: #e84545;
       }
+
+      div .profile-pic{
+        border-radius: 4em;
+      }
     }  
   </style>
 </head>
@@ -128,16 +132,15 @@
                         <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
                           @isset($profilePic)
                           
-                          <img style="width: %100; margin-right: 10px" src="{{ asset('storage/'.$profilePic) }}" alt="Prifile Pic" />
+                          <img class="profile-pic" style="width: %100; margin-right: 10px" src="{{ asset('storage/'.$profilePic) }}" alt="Prifile Pic" />
                             @else
-                            <img style="width: %00;" src="{{ asset('storage/users/profile-pic.jpg') }}" alt="Prifile Pic" />
+                            <img class="profile-pic" style="width: %00;" src="{{ asset('storage/users/profile-pic.jpg') }}" alt="Prifile Pic" />
                           @endisset  
                         </a>
                       </div>
                     <ul class="dd-box-shadow" >
-                    <li><a href="/users/{{ auth()->id() }}/detail">Profile</a></li>
+                    <li><a href="/users/{{ auth()->id() }}/detail/?from=home">Profile</a></li>
                       <li><a href="/posts/manage" >Manage Post</a></li>
-                      <li><a href="/contacts" >Manage Contacts</a></li>
                       <li>
                         <a href="#" >
                           <form class="inline" method="POST" action="/sign-out">

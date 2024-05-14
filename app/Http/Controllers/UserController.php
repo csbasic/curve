@@ -5,28 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
 
+    public function list()
+    {
+        $users = User::latest()->simplePaginate(10);
+        return view('users.list', ['users' => $users, 'page' => 'Users']);
+    }
+
     public function show(User $user)
     {
-        return view('profile.index', ['page' => 'Profile', 'user' => $user]);
+        return view('users.profile', ['page' => 'Profile', 'user' => $user]);
     }
 
-    public function editProfile()
+    //
+    public function editProfile($user)
     {
 
-        $user = User::find(auth()->id());
+        $user = User::find($user);
 
-        return view('profile.edit', ['page' => 'Edit', 'user' => $user]);
+        return view('users.edit', ['page' => 'Edit', 'user' => $user]);
     }
 
+    // update user
     public function update(Request $request, User $user)
     {
-        // $user = User::find(auth()->id());
 
-        if ($user->id != auth()->id()) {
+        if (!Auth::check()) {
             abort(403, 'Unauthorized Action');
         }
 
@@ -36,14 +44,13 @@ class UserController extends Controller
             'phone' => 'string',
             'bio' => 'string'
         ]);
-        // dd($request);
-        // dd($formFields);
+
         if ($request->hasFile('profile_pic')) {
             $formFields['profile_pic'] = $request->file('profile_pic')->store('user', 'public');
         }
 
         $user->update($formFields);
-        return redirect("/users/$user->id/detail")->with('message', 'Profile updated successfully!');
+        return redirect("/users/$user->id/detail/?from")->with('message', 'Profile updated successfully!');
     }
 
     // Store user into db

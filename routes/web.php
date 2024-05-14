@@ -5,8 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\TeamController;
+
 
 // get home page
 Route::get('/', [HomeController::class, 'index']);
@@ -15,64 +16,42 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/curve', [AboutController::class, 'curve']);
 Route::get('/team', [AboutController::class, 'team']);
 
-// get contact page
+// contact routes
 Route::get('/contact', [ContactController::class, 'createContact']);
 Route::get('/contacts/{contact}/detail', [ContactController::class, 'showContact'])->middleware('auth');
 Route::get('/contacts', [ContactController::class, 'listContacts'])->middleware('auth');
-
-// get contact detail
 Route::get('/messages/{message}/detail')->middleware('auth');
+Route::post('/message/save', [ContactController::class, 'store'])->middleware('auth');
 
-// save message
-Route::post('/message/save', [ContactController::class, 'store']);
-
-// get all posts
+// post routes
 Route::get('/posts', [PostController::class, 'index']);
-
-// show create post form
 Route::get('/post/create', [PostController::class, 'showCreatePostForm'])->middleware('auth');
-
-// update post
 Route::put('/posts/{post}/update', [PostController::class, 'update']);
-
-// save post
 Route::post('/post/save', [PostController::class, 'store'])->middleware('auth');
 
-// Manage posts
 Route::get('/posts/manage', [PostController::class, 'manage'])->middleware('auth');
-
-// show Edit post
 Route::get('/posts/{post}/edit', [PostController::class, 'showEditPostForm'])->middleware('auth');
-
-// Delete Listing
 Route::delete('/posts/{post}/delete', [PostController::class, 'destroy'])->middleware('auth');
-
-// Single post
 Route::get("/posts/{post}/detail", [PostController::class, 'show']);
 
-// get profile page
+//get user routes
+Route::get('/users', [UserController::class, 'list'])->middleware('auth');
 Route::get('/users/{user}/detail', [UserController::class, 'show'])->middleware('auth');
-
-// get edit profile page
 Route::get('/users/{user}/edit', [UserController::class, 'editProfile'])->middleware('auth');
-
-// get edit profile page
 Route::put('/users/{user}/update', [UserController::class, 'update'])->middleware('auth');
-
-// Create user
 Route::post('/user', [UserController::class, 'store']);
 
-// show sign up form | name route "login" to function with middleware
-Route::get('/sign-up', [UserController::class, 'showSignUpPage']);
-
-// Create user
+// Authentication routes
+Route::get('/sign-up', [UserController::class, 'showSignUpPage'])->middleware('guest');
 Route::post('/authenticate/sign-up', [UserController::class, 'signUp'])->middleware('guest');
-
-// log user out 
 Route::post('/sign-out', [UserController::class, 'signOut'])->middleware('auth');
-
-// show login form | name route "login" to function with middleware
 Route::get('/sign-in', [UserController::class, 'showSignInPage'])->name('login')->middleware('guest');
-
-//login user
 Route::post('/authenticate/sign-in', [UserController::class, 'signIn'])->middleware('guest');
+
+// Category routes
+Route::get('/categories/create', [CategoryController::class, 'create'])->middleware('auth');
+Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->middleware('auth');
+Route::post('/category/save', [CategoryController::class, 'store'])->middleware('auth');
+Route::put('/category/update', [CategoryController::class, 'update'])->middleware('auth');
+Route::delete('/categories/{category}/delete', [CategoryController::class, 'destroy'])->middleware('auth');
+Route::get('/categories', [CategoryController::class, 'list'])->middleware('auth');

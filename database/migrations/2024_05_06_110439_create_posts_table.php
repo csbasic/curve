@@ -11,8 +11,6 @@ return new class extends Migration
      */
     public $timestamps = true;
     public function up(): void
-
-
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('listings');
+        Schema::dropIfExists('posts');
     }
 };

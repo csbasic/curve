@@ -1,6 +1,6 @@
 <x-layout>
    @include('partials._breadcrumbs', ['page' => 'Contacts'])
-   <div class="row  justify-content-between">
+   <div class="row  justify-content-between"  data-aos="fade-up" data-aos-delay="100">
       <div class="col-md-6 offset-md-3">
          <table class="table ">
             <tbody>
@@ -44,7 +44,7 @@
                   @else
                   <tr class="border-gray-300">
                      <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                        <p class="text-center">No post Found!</p>
+                        <p class="text-center">No Message Found!</p>
                      </td>
                   </tr>
                @endunless

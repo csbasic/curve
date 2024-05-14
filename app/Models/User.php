@@ -17,9 +17,29 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    // Admin
+    // Editor - Post/ Categories
+    // User - Like / Comments
+
+    // Roles
+
+    const RULE_ADMIN = 'ADMIN';
+    const RULE_EDITOR = 'EDITOR';
+    const RULE_USER = 'USER';
+
+    const ROLES = [
+        self::RULE_ADMIN => 'Admin',
+        self::RULE_EDITOR => 'Editor',
+        self::RULE_USER => 'User',
+    ];
+
+
+
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
     ];
 
@@ -48,5 +68,18 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole($role)
+    {
+        if (is_string($role)) {
+            return $this->roles->contains('name', $role);
+        }
+        return $this->roles->contains('id', $role->id);
     }
 }
