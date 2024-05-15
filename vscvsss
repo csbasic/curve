@@ -1,0 +1,91 @@
+[33mcommit 5faabb02540b0f47696d7e189c70a1d8572c4737[m[33m ([m[1;36mHEAD -> [m[1;32mroles[m[33m, [m[1;31mroles/roles[m[33m)[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Tue May 14 19:56:49 2024 +0100
+
+    Done with Category CRUD but update does not work, Still in progress
+
+[33mcommit 5a72f73692bd8db39fcd04017966d3f8a923d72b[m[33m ([m[1;31mmain/main[m[33m, [m[1;31mmain/Roles[m[33m, [m[1;32mmain[m[33m)[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Fri May 10 10:22:32 2024 +0100
+
+    Added the other fillables on contact model, removed comment on paylout component.
+
+[33mcommit 84af742c506353099fc580f622e42a2d5e650e78[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Wed May 8 23:33:44 2024 +0100
+
+    Change previous path to post detail
+
+[33mcommit 5e3d23c0dc3a69da31833893e4bafe208cf763fb[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Wed May 8 22:45:36 2024 +0100
+
+    Done with manage contacts. Done changes on About
+
+[33mcommit 32f91a2790ba6aa0187c70c703e6777cdcfcec5e[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Mon May 6 11:57:47 2024 +0100
+
+    Contact model and for method created in Contact controller
+
+[33mcommit 433554602d4015722c97a6ebef54387c40e9ccde[m
+Author: Chi Serge <79599861+csbasic@users.noreply.github.com>
+Date:   Fri May 3 13:51:18 2024 +0100
+
+    Develop (#3)
+    
+    * Changes made on navbar. Four tabs and a user icon with drop down manu added. Three pages corresponding to tabs also added.
+    
+    * User profile is added to project. Breadcump modified. Solved update failure on post
+    
+    * Made correction of content display omission
+    
+    * Profile (#4)
+    
+    * User profile is added to project. Breadcump modified. Solved update failure on post
+    
+    * Made correction of content display omission
+    
+    * Added the github profile link of my instructor
+
+[33mcommit 279125643981e097fd15fc397c248193ed9412f0[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Thu May 2 06:08:45 2024 +0100
+
+    Made correction of content display omission
+
+[33mcommit 6e99c69c0d95f8f8954b7ce063267c1785f73e49[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Thu May 2 05:24:48 2024 +0100
+
+    User profile is added to project. Breadcump modified. Solved update failure on post
+
+[33mcommit 71a86981093b059766cdb68c046cfa85fc2963e4[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Tue Apr 30 23:02:46 2024 +0100
+
+    Changes made on navbar. Four tabs and a user icon with drop down manu added. Three pages corresponding to tabs also added.
+
+[33mcommit f0f82c18244232f84843a45850f551477182df23[m[33m ([m[1;31mdevelop/profile[m[33m, [m[1;31mdevelop/main[m[33m)[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Fri Apr 26 13:19:18 2024 +0100
+
+    Done few changes on sign-in.blade, artiscle.blade, index.blade and manage.blade respectively.
+
+[33mcommit e85d1bc67888bbaa727cffaca429e4f18e27e675[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Thu Apr 25 09:58:42 2024 +0100
+
+    Major changes done!
+
+[33mcommit f14c621ba472666c210cc3e27da530f5c766aaf5[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Wed Apr 24 23:35:58 2024 +0100
+
+    Comments removed on the basecode and pagination done
+
+[33mcommit 785b8fe40579051e7c4003130dd5c594dec4f4e8[m
+Author: Chi Serge <chijokae@gmail.com>
+Date:   Tue Apr 23 00:49:42 2024 +0100
+
+    Complete project; with a burg without error message

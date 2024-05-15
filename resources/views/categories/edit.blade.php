@@ -11,7 +11,7 @@
 
                <article class="article">
                   <div class="reply-form p-4">
-                     <form method="POST" action="/category/update" enctype="multipart/form-data">
+                     <form method="POST" action="/categories/{{ $category->id }}/update" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row mt-4">

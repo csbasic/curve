@@ -52,6 +52,6 @@ Route::post('/authenticate/sign-in', [UserController::class, 'signIn'])->middlew
 Route::get('/categories/create', [CategoryController::class, 'create'])->middleware('auth');
 Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->middleware('auth');
 Route::post('/category/save', [CategoryController::class, 'store'])->middleware('auth');
-Route::put('/category/update', [CategoryController::class, 'update'])->middleware('auth');
+Route::put('/categories/{category}/update', [CategoryController::class, 'update'])->middleware('auth');
 Route::delete('/categories/{category}/delete', [CategoryController::class, 'destroy'])->middleware('auth');
 Route::get('/categories', [CategoryController::class, 'list'])->middleware('auth');
