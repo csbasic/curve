@@ -47,13 +47,15 @@ class CategoryController extends Controller
             abort(403, 'Unautorized!');
         }
 
+
+
         $formField = $request->validate([
             'name' => 'required|string'
         ]);
 
         $category->update($formField);
 
-        return back()->with('message', 'Category updated successfully!');
+        return redirect('/categories')->with('message', 'Category updated successfully!');
     }
 
     public function destroy(Category $category)
