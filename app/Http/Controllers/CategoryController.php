@@ -47,8 +47,6 @@ class CategoryController extends Controller
             abort(403, 'Unautorized!');
         }
 
-
-
         $formField = $request->validate([
             'name' => 'required|string'
         ]);

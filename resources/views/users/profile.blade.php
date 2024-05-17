@@ -66,7 +66,7 @@
                   <a href="/users" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Users</a>
                   <a href="/categories" class="badge" style=" background-color: #E84545; color: white; width: 180px">Categories</a>
                   <a href="/contacts" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Contacts</a>
-                  
+                  <a href="/roles" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Roles</a>
                </div>
             </div>
          </div>

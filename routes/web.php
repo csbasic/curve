@@ -7,7 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
-
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\UserRoleController;
 
 // get home page
 Route::get('/', [HomeController::class, 'index']);
@@ -55,3 +56,15 @@ Route::post('/category/save', [CategoryController::class, 'store'])->middleware(
 Route::put('/categories/{category}/update', [CategoryController::class, 'update'])->middleware('auth');
 Route::delete('/categories/{category}/delete', [CategoryController::class, 'destroy'])->middleware('auth');
 Route::get('/categories', [CategoryController::class, 'list'])->middleware('auth');
+
+// Roles Routes
+Route::get('/roles', [RolesController::class, 'listRoles'])->middleware('auth');
+Route::get('/role/create', [RolesController::class, 'create'])->middleware('auth');
+Route::post('/role/store', [RolesController::class, 'store'])->middleware('auth');
+Route::get('/roles/{role}/edit', [RolesController::class, 'edit'])->middleware('auth');
+Route::put('/roles/{role}/update', [RolesController::class, 'update'])->middleware('auth');
+Route::delete('/roles/{role}/delete', [RolesController::class, 'destroy'])->middleware('auth');
+
+// UserRoles Routes
+Route::get('/role/assign', [UserRoleController::class, 'assignRole'])->middleware('auth');
+Route::post('/user-role/store', [UserRoleController::class, 'store'])->middleware('auth');

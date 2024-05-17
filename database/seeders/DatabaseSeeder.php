@@ -24,30 +24,16 @@ class DatabaseSeeder extends Seeder
             'email' => 'jaythomas@gmail.com',
         ]);
 
-        Post::factory(6)->create([
-            'user_id' => $user->id,
-        ]);
+        Post::factory(6)->create(['user_id' => $user->id]);
 
-        Category::create([
-            'name' => 'Sports',
-        ]);
-        Category::create([
-            'name' => 'Entertainment',
-        ]);
-        Category::create([
-            'name' => 'Politics',
-        ]);
-        Category::create([
-            'name' => 'Economy',
-        ]);
-        Category::create([
-            'name' => 'Tech',
-        ]);
-        Category::create([
-            'name' => 'Health',
-        ]);
-        Category::create([
-            'name' => 'Lifestyle',
-        ]);
+        Category::create(['name' => 'Sports']);
+        Category::create(['name' => 'Entertainment']);
+        Category::create(['name' => 'Politics']);
+        Category::create(['name' => 'Economy']);
+        Category::create(['name' => 'Tech']);
+        Category::create(['name' => 'Health']);
+        Category::create(['name' => 'Lifestyle']);
+        $rs = new RolesSeeder;
+        $rs->run();
     }
 }

@@ -34,7 +34,7 @@
                         <div class="row mt-4">
                            <label for="category_id" class="inline-block text-lg mb-2">Post Categories</label>
                      
-                           <select id="category_id" name="category_id" size="4" multiple>
+                           <select id="category_id" name="category_id" size="4">
                               @foreach ($categories as $category)
                                  <option value="{{ $category->id }}">{{ $category->name }}</option>
                               @endforeach

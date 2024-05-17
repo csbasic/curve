@@ -17,4 +17,12 @@ class Category extends Model
     {
         return $this->hasMany(Post::class, 'category_id');
     }
+
+    public function hasRole($role)
+    {
+        if (is_string($role)) {
+            return $this->roles->contains('name', $role);
+        }
+        return $this->roles->contains('id', $role->id);
+    }
 }
