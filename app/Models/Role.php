@@ -11,12 +11,12 @@ class Role extends Model
 
     protected $fillable = ['name'];
 
-    public const IS_USER = 1;
+    public const IS_USER = 3;
     public const IS_EDITOR = 2;
-    public const IS_ADMIN = 3;
+    public const IS_ADMIN = 1;
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_id');
     }
 }

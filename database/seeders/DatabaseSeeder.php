@@ -4,10 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Category;
 use DateTime;
-use App\Models\User;
 use App\Models\Post;
+use App\Models\Role;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Permission;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,8 +22,13 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(5)->create();
 
         $user = User::factory()->create([
-            'name' => 'Jay Thomas',
-            'email' => 'jaythomas@gmail.com',
+            'name' => 'Administrator',
+            'email' => 'admin@curve.com',
+            'password' => '111111',
+            'profile_pic' => 'user/profile-pic.jpg',
+            'phone' => '+237670307126',
+            'occupation' => 'Software Developer',
+            'bio' => 'Hi there! I am the admin of Curve'
         ]);
 
         Post::factory(6)->create(['user_id' => $user->id]);
@@ -33,7 +40,9 @@ class DatabaseSeeder extends Seeder
         Category::create(['name' => 'Tech']);
         Category::create(['name' => 'Health']);
         Category::create(['name' => 'Lifestyle']);
-        $rs = new RolesSeeder;
-        $rs->run();
+
+        Role::create(['name' => 'Administrator']);
+        Role::create(['name' => 'Editor']);
+        Role::create(['name' => 'User']);
     }
 }

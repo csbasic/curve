@@ -13,7 +13,7 @@
 
                <article class="article">
                   <div class="reply-form p-4">
-                     <form method="POST" action="/user-role/store" enctype="multipart/form-data">
+                     <form method="POST" action="/role/assign-user" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mt-4">

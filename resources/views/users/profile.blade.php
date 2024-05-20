@@ -10,7 +10,8 @@
 
 <x-layout>
    @include('partials._breadcrumbs', ['page' => $page, 'subtitle' => $subtitle])
-    <!-- Section of user profile -->
+    
+   <!-- Section of user profile -->
    <section id="service-details" class="service-details">
 
       <div class="container">
@@ -59,6 +60,8 @@
             </div>
 
          </div>
+
+   
       
          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <div style="margin-top: 30px">
@@ -66,7 +69,7 @@
                   <a href="/users" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Users</a>
                   <a href="/categories" class="badge" style=" background-color: #E84545; color: white; width: 180px">Categories</a>
                   <a href="/contacts" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Contacts</a>
-                  <a href="/roles" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Roles</a>
+                  <a href="/users/roles" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Roles</a>
                </div>
             </div>
          </div>

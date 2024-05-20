@@ -6,7 +6,7 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 
-class RolesController extends Controller
+class RoleController extends Controller
 {
     // List Roles
     public function listRoles()

@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\RolesController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserRoleController;
 
 // get home page
@@ -46,7 +47,7 @@ Route::post('/user', [UserController::class, 'store']);
 Route::get('/sign-up', [UserController::class, 'showSignUpPage'])->middleware('guest');
 Route::post('/authenticate/sign-up', [UserController::class, 'signUp'])->middleware('guest');
 Route::post('/sign-out', [UserController::class, 'signOut'])->middleware('auth');
-Route::get('/sign-in', [UserController::class, 'showSignInPage'])->name('login')->middleware('guest');
+Route::get('/sign-in', [UserController::class, 'showSignInPage'])->name('signIn')->middleware('guest');
 Route::post('/authenticate/sign-in', [UserController::class, 'signIn'])->middleware('guest');
 
 // Category routes
@@ -58,13 +59,28 @@ Route::delete('/categories/{category}/delete', [CategoryController::class, 'dest
 Route::get('/categories', [CategoryController::class, 'list'])->middleware('auth');
 
 // Roles Routes
-Route::get('/roles', [RolesController::class, 'listRoles'])->middleware('auth');
-Route::get('/role/create', [RolesController::class, 'create'])->middleware('auth');
-Route::post('/role/store', [RolesController::class, 'store'])->middleware('auth');
-Route::get('/roles/{role}/edit', [RolesController::class, 'edit'])->middleware('auth');
-Route::put('/roles/{role}/update', [RolesController::class, 'update'])->middleware('auth');
-Route::delete('/roles/{role}/delete', [RolesController::class, 'destroy'])->middleware('auth');
+Route::get('/roles', [RoleController::class, 'listRoles'])->middleware('auth');
+Route::get('/role/create', [RoleController::class, 'create'])->middleware('auth');
+Route::post('/role/store', [RoleController::class, 'store'])->middleware('auth');
+Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->middleware('auth');
+Route::put('/roles/{role}/update', [RoleController::class, 'update'])->middleware('auth');
+Route::delete('/roles/{role}/delete', [RoleController::class, 'destroy'])->middleware('auth');
 
 // UserRoles Routes
-Route::get('/role/assign', [UserRoleController::class, 'assignRole'])->middleware('auth');
-Route::post('/user-role/store', [UserRoleController::class, 'store'])->middleware('auth');
+// Route::get('/role/assign', [UserRoleController::class, 'assignRole'])->middleware('auth');
+// Route::post('/user-role/store', [UserRoleController::class, 'store'])->middleware('auth');
+
+// Route::middleware(['auth', 'role:admin'])->group(function () {
+
+// });
+
+Route::get('/users/roles', [UserRoleController::class, 'getUserRoles']);
+Route::post('/role/assign-user', [UserRoleController::class, 'assignRole']);
+Route::delete('/roles/{role}/remove', [UserRoleController::class, 'removeRole']);
+
+
+Route::get('/permissions-roles', [PermissionController::class, "getRolePermission"]);
+// Route::get('/');
+// Route::middleware(['auth', 'role:admin'])->group(function () {
+
+// });

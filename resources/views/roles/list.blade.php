@@ -41,7 +41,10 @@
             <a href="/role/create" class="btn btn-outline-danger">Create Role</a>
          </div>
          <div class="mt-3">
-            <a href="/role/assign" class="btn btn-outline-danger">Assign Roles</a>
+            <a href="/users/roles" class="btn btn-outline-danger">Assign Role</a>
+         </div>
+         <div class="mt-3">
+            <a href="/permissions-roles" class="btn btn-outline-danger">Set Permission</a>
          </div>
       </div>
    </div>

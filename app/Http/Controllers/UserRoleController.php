@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
 
 class UserRoleController extends Controller
 {
     // get roles and users
-    public function assignRole()
+    public function getUserRoles()
     {
         return view('roles.assign', ['roles' => Role::all(), 'users' => User::all()]);
     }
 
     // store role assiged
-    public function store(Request $request)
+    public function assignRole(Request $request)
     {
         if (!auth()->check()) {
             abort(403, 'Unauthorized Action!');
@@ -28,6 +28,17 @@ class UserRoleController extends Controller
         ]);
 
         UserRole::create($formFields);
+
+        return back()->with('message', 'Role assiged successfully');
+    }
+
+    public function removeRole(Role $role)
+    {
+        if (!auth()->check()) {
+            abort(403, 'Unauthorized Action!');
+        }
+
+        $role->delete();
 
         return back()->with('message', 'Role assiged successfully');
     }
