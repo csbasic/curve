@@ -17,7 +17,6 @@
       <div class="container">
 
          <div class="row gy-5">
-
             <div class="col-lg-9 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
                <section id="team" class="team">
                   <div class="container">
@@ -49,19 +48,14 @@
             </div>
 
             <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-
                <div class="help-box d-flex flex-column justify-content-center align-items-center mt-0">
                <i class="bi bi-telephone help-icon"></i>
                <h4>Have a Question?</h4>
                <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span>@if ($user->occupation) {{ $user->phone }}@endif</span></p>
                <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:contact@example.com">{{ $user->email }}</a></span></p>
                </div>
-
             </div>
-
          </div>
-
-   
       
          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <div style="margin-top: 30px">
@@ -89,5 +83,6 @@
 
       </div>
 
-   </section><!-- End Section of user profile -->
+   </section>
+   <!-- End Section of user profile -->
 </x-layout>

@@ -16,9 +16,7 @@
                      <form method="POST" action="/role/store" enctype="multipart/form-data">
                         @csrf
                         <div class="row mt-4">
-                           <label for="name" class="inline-block text-lg mb-2"
-                              >Role name</label
-                           >
+                           <label for="name" class="inline-block text-lg mb-2">Role name</label>
                            <input
                               type="text"
                               class="border border-gray-200 rounded p-2 w-full"

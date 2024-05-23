@@ -30,7 +30,6 @@ class ContactController extends Controller
     public function listContacts()
     {
         $this->authorize('update', Contact::class);
-
         return view('contact.list', ['contacts' => Contact::latest()->simplePaginate(6), 'page' => 'Contact List']);
     }
 

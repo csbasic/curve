@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\User;
@@ -12,8 +13,6 @@ class UserController extends Controller
 
     public function list()
     {
-        $this->authorize('update', User::class);
-
         $users = User::latest()->simplePaginate(10);
         return view('users.list', ['users' => $users, 'page' => 'Users']);
     }
@@ -26,10 +25,7 @@ class UserController extends Controller
     //
     public function editProfile($user)
     {
-
-        $user = User::find($user);
-
-        return view('users.edit', ['page' => 'Edit', 'user' => $user]);
+        return view('users.edit', ['page' => 'Edit', 'user' => User::find($user)]);
     }
 
     // update user
@@ -37,7 +33,7 @@ class UserController extends Controller
     {
 
         if (!Auth::check()) {
-            abort(403, '| THIS ACTION IS UNAUTHORIZED');
+            abort(403, 'THIS ACTION IS UNAUTHORIZED');
         }
 
         $formFields = $request->validate([
@@ -70,6 +66,7 @@ class UserController extends Controller
             $formFields['profile_pic'] = 'user/profile-pic.jpg';
         }
 
+        $formFields['role_id'] = Role::IS_USER;
         $formFields['password'] = bcrypt($formFields['password']);
         $user = User::create($formFields);
 

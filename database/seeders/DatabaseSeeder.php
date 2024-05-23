@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'profile_pic' => 'user/profile-pic.jpg',
             'phone' => '+237670307126',
             'occupation' => 'Software Developer',
+            'role_id' => Role::IS_ADMIN,
             'bio' => 'Hi there! I am the admin of Curve'
         ]);
 

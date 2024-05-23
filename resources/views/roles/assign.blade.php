@@ -13,13 +13,13 @@
 
                <article class="article">
                   <div class="reply-form p-4">
-                     <form method="POST" action="/role/assign-user" enctype="multipart/form-data">
+                     <form method="POST" action="/users/{{ Request::segment(2) }}/role/assign" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row mt-4">
                            <label for="role_id" class="inline-block  mb-2">Roles</label>
                            
-                           <select id="role_id" name="role_id">
+                           <select class="border border-gray-200 rounded p-2 w-full" id="role_id" name="role_id">
                               <option selected>Select Role</option>
                               @foreach ($roles as $role)
                                  <option value="{{ $role->id }}">{{ $role->name }}</option>

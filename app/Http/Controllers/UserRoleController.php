@@ -21,8 +21,6 @@ class UserRoleController extends Controller
             abort(403, 'Unauthorized Action!');
         }
 
-        // dd($user);
-
         $formFields = $request->validate([
             'role_id' => 'required|integer'
         ]);
