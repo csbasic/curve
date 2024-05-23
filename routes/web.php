@@ -74,8 +74,8 @@ Route::delete('/roles/{role}/delete', [RoleController::class, 'destroy'])->middl
 
 // });
 
-Route::get('/users/roles', [UserRoleController::class, 'getUserRoles']);
-Route::post('/role/assign-user', [UserRoleController::class, 'assignRole']);
+Route::get('/users/{user}/role/edit', [UserRoleController::class, 'getUserRoles']);
+Route::put('/role/assign-user', [UserRoleController::class, 'assignRole']);
 Route::delete('/roles/{role}/remove', [UserRoleController::class, 'removeRole']);
 
 

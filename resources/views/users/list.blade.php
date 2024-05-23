@@ -4,8 +4,8 @@
 <x-layout>
    @include('partials._breadcrumbs', ['page' => $page, 'subtitle' => $subtitle, 'from' => 'users-list'])
 
-   <div class="row  justify-content-between"  data-aos="fade-up" data-aos-delay="100">
-      <div class="col-md-6 offset-md-3">
+   <div class="row  justify-content-center"  data-aos="fade-up" data-aos-delay="100">
+      <div class="col-md-10">
          <table class="table ">
             <tbody>
                @foreach ($users as $user)
@@ -22,13 +22,24 @@
                         </div>
                         </td>
                         <td class="text-primary mt-3">
-                        <div class="mt-3">
-                           <a href="/users/{{ $user->id }}/detail/?from=users-list">
-                                 {{ $user->name }}
-                           </a>
-                        </div>
+                           <div class="mt-3">
+                              <a href="/users/{{ $user->id }}/detail/?from=users-list">
+                                    {{ $user->name }}
+                              </a>
+                           </div>
                         </td>
-                        <td class="">
+                        <td width="80" class="">
+                           <div class="mt-3">
+                              @if ($user->role_id == \App\Models\Role::IS_ADMIN)
+                                 <i>Administrator</i>  
+                              @elseif ($user->role_id == \App\Models\Role::IS_EDITOR)
+                              <i>Editor</i>                            
+                                 @else   
+                                 <i>User</i>
+                              @endif
+                           </div>
+                        </td>
+                        <td width="80" class="">
                            <div class="mt-3">
                               <a href="/users/{{ $user->id }}/edit"
                                  class="mt-5 text-dark"></i>Edit
@@ -36,11 +47,19 @@
                               </a>
                            </div>
                         </td>
-                        <td class=" mt-3 mb-0">
+                        <td width="130" class="">
+                           <div class="mt-3">
+                              <a href="/users/{{ $user->id }}/role/edit"
+                                 class="mt-5 text-dark"></i>Assign Role
+                                 <i class="bi bi-pencil"></i>
+                              </a>
+                           </div>
+                        </td>
+                        <td width="120" class=" mt-3 mb-0">
                            <form class="pt-2"  action="/users/{{ $user->id }}/delete" method="POST">
                               @csrf
                               @method('DELETE')
-                              <button type="button" onclick="alert('Do you really want to take this action!')" class="btn text-danger"> Delete <i class="bi bi-pencil"></i>
+                              <button type="button" onclick="alert('Do you really want to take this action!')" class="btn text-danger"> Delete <i class="bi bi-trash"></i>
                               </button>
                            </form>
                         </td>

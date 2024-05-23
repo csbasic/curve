@@ -2,7 +2,7 @@
    $subtitle = "Assign Role Subtitle We need not to have biases if the goal of dispensing information is to educate the masses. Our world is dying and crumbling because those who wants to educate others are less  informed than the masses.";
 @endphp
 <x-layout>
-   @include('partials._breadcrumbs', ['page' => 'Create', 'link' => 'Roles', 'path' => '/roles', 'subtitle' => $subtitle])
+   @include('partials._breadcrumbs', ['page' => 'Create', 'link' => 'Users', 'path' => '/users', 'subtitle' => $subtitle])
    <section id="blog-details" class="blog-details">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -15,23 +15,7 @@
                   <div class="reply-form p-4">
                      <form method="POST" action="/role/assign-user" enctype="multipart/form-data">
                         @csrf
-
-                        <div class="row mt-4">
-                           <label for="user_id" class=" text-lg mb-2">Users</label>
-                     
-                           <select id="user_id" name="user_id">
-                              
-                              <option selected>Select User</option>
-                              @foreach ($users as $user)
-                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
-                              @endforeach
-                           
-                           </select>
-                           @error('user_id')
-                              <p class="text-danger fs-6 fw-lighter">{{ $message }}</p>
-                           @enderror
-                        </div>
-
+                        @method('PUT')
                         <div class="row mt-4">
                            <label for="role_id" class="inline-block  mb-2">Roles</label>
                            

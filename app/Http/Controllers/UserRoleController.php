@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use App\Models\User;
-use App\Models\UserRole;
 use Illuminate\Http\Request;
 
 class UserRoleController extends Controller
@@ -12,22 +11,23 @@ class UserRoleController extends Controller
     // get roles and users
     public function getUserRoles()
     {
-        return view('roles.assign', ['roles' => Role::all(), 'users' => User::all()]);
+        return view('roles.assign', ['roles' => Role::all()]);
     }
 
     // store role assiged
-    public function assignRole(Request $request)
+    public function assignRole(Request $request, User $user)
     {
         if (!auth()->check()) {
             abort(403, 'Unauthorized Action!');
         }
 
+        // dd($user);
+
         $formFields = $request->validate([
-            'user_id' => 'required|integer',
             'role_id' => 'required|integer'
         ]);
 
-        UserRole::create($formFields);
+        $user->update($formFields);
 
         return back()->with('message', 'Role assiged successfully');
     }

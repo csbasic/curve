@@ -11,6 +11,9 @@ class CategoryController extends Controller
 
     public function list()
     {
+
+        $this->authorize('create', Category::class);
+
         return view('categories.list', ['categories' => Category::simplePaginate(10)]);
     }
 
@@ -25,6 +28,8 @@ class CategoryController extends Controller
         if (!auth()->check()) {
             abort(403, 'Unauthorized Action!');
         }
+
+        $this->authorize('create', Category::class);
 
         $formField = $request->validate([
             'name' => 'required|string'
@@ -47,6 +52,8 @@ class CategoryController extends Controller
             abort(403, 'Unautorized!');
         }
 
+        $this->authorize('update', $category);
+
         $formField = $request->validate([
             'name' => 'required|string'
         ]);
@@ -62,6 +69,8 @@ class CategoryController extends Controller
         if (!auth()->check()) {
             abort(403, 'Unauthorized!');
         }
+
+        $this->authorize('delete', $category);
 
         $category->delete();
 

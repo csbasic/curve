@@ -12,6 +12,8 @@ class UserController extends Controller
 
     public function list()
     {
+        $this->authorize('update', User::class);
+
         $users = User::latest()->simplePaginate(10);
         return view('users.list', ['users' => $users, 'page' => 'Users']);
     }
@@ -35,14 +37,14 @@ class UserController extends Controller
     {
 
         if (!Auth::check()) {
-            abort(403, 'Unauthorized Action');
+            abort(403, '| THIS ACTION IS UNAUTHORIZED');
         }
 
         $formFields = $request->validate([
             'name' => 'required|string',
-            'occupation' => 'string',
-            'phone' => 'string',
-            'bio' => 'string'
+            'phone' => '',
+            'occupation' => '',
+            'bio' => ''
         ]);
 
         if ($request->hasFile('profile_pic')) {

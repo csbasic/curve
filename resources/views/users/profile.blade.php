@@ -66,10 +66,23 @@
          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <div style="margin-top: 30px">
                <div class="col-lg-9 ps-lg-5 pt-6">
-                  <a href="/users" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Users</a>
-                  <a href="/categories" class="badge" style=" background-color: #E84545; color: white; width: 180px">Categories</a>
-                  <a href="/contacts" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Contacts</a>
-                  <a href="/users/roles" class="badge" style=" background-color: #E84545; color: white; width: 180px">Manage Roles</a>
+
+                  @can('create', \App\Models\User::class)
+                     <a href="/users" class="btn btn-outline-danger" style="width: 180px">Manage Users</a>
+                  @endcan
+                  
+                  @can('create', \App\Models\Category::class)
+                     <a href="/categories" class="btn btn-outline-danger" style="white; width: 180px">Categories</a>
+                  @endcan
+
+                  @can('update', \App\Models\Contact::class)
+                     <a href="/contacts" class="btn btn-outline-danger" style="width: 180px">Manage Contacts</a>
+                  @endcan
+
+                  @can('update', \App\Models\Role::class)
+                     <a href="/roles" class="btn btn-outline-danger" style="width: 180px">Manage Roles</a>
+                  @endcan
+                  
                </div>
             </div>
          </div>

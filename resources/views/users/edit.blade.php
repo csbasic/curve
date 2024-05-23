@@ -21,9 +21,7 @@
                         @csrf
                         @method('PUT')
                         <div class="row mt-4">
-                           <label for="name" class="inline-block text-lg mb-2"
-                              >Name</label
-                           >
+                           <label for="name" class="inline-block text-lg mb-2">Name</label>
                            <input
                               type="text"
                               class="border border-gray-200 rounded p-2 w-full"
@@ -109,7 +107,7 @@
                            @enderror
                         </div>
 
-                        <div class="row col-md-3 mt-3">
+                        <div class="row col-md-4 mt-3">
                            <button
                               class="btn btn-danger py-2 px-4 hover:bg-black">
                               Update Profile

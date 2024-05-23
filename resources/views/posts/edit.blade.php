@@ -40,7 +40,7 @@
 
                         <div class="row mt-4">
                            <label for="category_id" class="inline-block text-lg mb-2">Post Categories</label>
-                           <select id="category_id" name="category_id" size="4" multiple>
+                           <select class="border border-gray-200 rounded p-2 w-full" id="category_id" name="category_id">
                               @foreach ($categories as $category)
                                  <option value="{{ $category->id }}" @if ($post->category_id + 0 == $category->id) selected  @endif>{{ $category->name }}</option>
                               @endforeach
